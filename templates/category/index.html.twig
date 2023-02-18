@@ -19,10 +19,10 @@
             <tr>
                 <td>{{ category.id }}</td>
                 <td>{{ category.name }}</td>
-                <td>{{ category.imageUrl }}</td>
+                <td><img src="{{ asset(category.imageUrl) }}" alt="{{ category.name }}"></td>
                 <td>
-                    <a href="{{ path('app_category_show', {'id': category.id}) }}">show</a>
-                    <a href="{{ path('app_category_edit', {'id': category.id}) }}">edit</a>
+                    <a href="{{ path('app_category_show', {'id': category.id}) }}">Voir plus</a>
+                    <!-- <a href="{{ path('app_category_edit', {'id': category.id}) }}">edit</a> -->
                 </td>
             </tr>
         {% else %}
@@ -34,4 +34,14 @@
     </table>
 
     <a href="{{ path('app_category_new') }}">Create new</a>
+
+    <style>
+        body{
+            background-color: lightblue;
+        }
+
+        img{
+            width: 100px;
+        }
+    </style>
 {% endblock %}

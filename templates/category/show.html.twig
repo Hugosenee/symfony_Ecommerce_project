@@ -21,9 +21,31 @@
         </tbody>
     </table>
 
+    {% for product in category.products %}
+        <div id="product">
+            <li>{{ product.name }}</li>
+            <img src="{{ asset(product.imageUrl) }}" alt="{{ product.name }}">
+            <a href="{{ path('app_product_show', {'id': product.id}) }}">show</a>
+        </div>
+
+    {% endfor %}
+
+
     <a href="{{ path('app_category_index') }}">Categorys</a>
 
-    <a href="{{ path('app_category_edit', {'id': category.id}) }}">edit</a>
+    <!-- <a href="{{ path('app_category_edit', {'id': category.id}) }}">edit</a> -->
 
     {{ include('category/_delete_form.html.twig') }}
+
+    <style>
+        body{
+            background-color: lightblue;
+        }
+
+        #product img{
+            width: 50px;
+        }
+    </style>
 {% endblock %}
+
+

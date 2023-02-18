@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Category;
 use App\Form\CategoryType;
 use App\Repository\CategoryRepository;
+use App\Repository\ProductRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -41,10 +42,30 @@ class CategoryController extends AbstractController
     }
 
     #[Route('/{id}', name: 'app_category_show', methods: ['GET'])]
-    public function show(Category $category): Response
+    public function show($id, CategoryRepository $categoryRepository): Response
     {
+        $category = $categoryRepository->find($id);
+
+        if (!$category) {
+           throw $this->createNotFoundException('Category Not Found');
+        }
+
         return $this->render('category/show.html.twig', [
             'category' => $category,
+        ]);
+    }
+    public function showId(Request $request, ProductRepository $productRepository): Response
+    {
+        $productId = $request->get('id');
+
+        $product = $productRepository->find($productId);
+
+        if (!$product) {
+            throw $this->createNotFoundException('Le produit avec l\'ID '.$productId.' n\'existe pas.');
+        }
+
+        return $this->render('product/show.html.twig', [
+            'product' => $product,
         ]);
     }
 
