@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AppController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h1>Hello {{ controller_name }}! ✅</h1>
+
+    <a href="{{ path('app_product_index') }}">Voir tous les produits</a> <br>
+    <a href="{{ path('app_category_index') }}">Voir toute les categories</a> <br>
+
+
+    <a href="{{ path('app_category_teeshirt') }}">Tee Shirt</a>
+    <a href="{{ path('app_category_pull') }}">Pull</a>
+    <a href="{{ path('app_category_pantalon') }}">Pantalon</a> <br>
+
+    This friendly message is coming from:
+    <ul>
+        <li>Your controller at <code><a href="{{ 'C:/laragon/www/renduSymfony/src/Controller/AppController.php'|file_link(0) }}">src/Controller/AppController.php</a></code></li>
+        <li>Your template at <code><a href="{{ 'C:/laragon/www/renduSymfony/templates/app/index.html.twig'|file_link(0) }}">templates/app/index.html.twig</a></code></li>
+    </ul>
+</div>
+{% endblock %}
